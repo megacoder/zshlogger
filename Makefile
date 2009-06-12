@@ -1,8 +1,7 @@
-CCMODE	=32
-#CCMODE	=64
-CC	=gcc -m${CCMODE}
-#CFLAGS	=-Os -Wall -Werror -pedantic -g
-CFLAGS	=-O0 -Wall -Werror -pedantic -g
+#CCMODE	=-m32
+#CCMODE	=-m64
+CC	=gcc ${CCMODE}
+CFLAGS	=-Os -Wall -Werror -pedantic -g
 LDFLAGS	=-g
 LDLIBS	=-lreadline -lncurses
 
