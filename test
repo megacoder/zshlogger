@@ -1,0 +1,19 @@
+#ignore	THIS LINE SHOULD BE IGNORED
+#step	Well, this is it
+ls -l
+#snip	ls -l
+#note	Show the date
+date
+#quiet	echo \# who am i
+echo '# who am i'
+#step	Second step
+#hide	echo '# who am i'
+#snip	echo '# who am i'
+#quiet	echo '# who am i'
+#step	Test line continuation
+echo i\
+am a\
+continued\
+line.
+#step	Finished
+echo Viola
