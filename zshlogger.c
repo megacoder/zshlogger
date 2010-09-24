@@ -109,7 +109,7 @@ usage(
 {
 	if( fmt )	{
 		va_list	ap;
-		
+
 		fprintf( stderr, "%s: ", me );
 		va_start( ap, fmt );
 		vfprintf( stderr, fmt, ap );
@@ -331,13 +331,14 @@ doCommand(
 	char *          bp;
 	char *		verb;
 	char *		rest;
+	size_t		len;
 
 	hideCommand = 0;
 	snipResults = 0;
 	beQuiet = 0;
 	reallyRun = runCommand;
 	do	{
-		/* Trim whitespace				 	 */
+		/* Trim trailing whitespace				 */
 		line = skipWhitespace( line );
 		for( bp = line + strlen( line ) - 1; bp > line; )	{
 			if( !isspace( *bp ) )	{
@@ -414,8 +415,15 @@ doCommand(
 		}
 		line = skipWhitespace( line );
 	} while( isspace( line[0] ) || (line[0] == '#') );
-	verb = strtok( line, " \t\n" );
-	rest = verb + strlen( verb ) + 1;
+	len = strlen( line );
+	verb = strtok( line, " \t" );
+	if( strlen( verb ) < len )	{
+		/* More stuff at end of command, step over verb		*/
+		rest = verb + strlen( verb ) + 1;
+	} else	{
+		/* Command is one token					*/
+		rest = "";
+	}
 	verb = findPath( verb );
         if( !hideCommand )      {
 		writeScript( "cat <<-'EOF'" );
@@ -455,8 +463,8 @@ removeScriptFile(
 {
 	if( scriptFn[0] )	{
 		if( debugLevel > 1 )	{
-			fprintf( 
-				stderr, 
+			fprintf(
+				stderr,
 				"%s: leaving '%s' for your inspection.\n",
 				me,
 				scriptFn
@@ -482,9 +490,9 @@ openScriptFile(
 			tmpdir = "/tmp";
 		}
 	}
-	snprintf( 
-		scriptFn, 
-		sizeof( scriptFn ), 
+	snprintf(
+		scriptFn,
+		sizeof( scriptFn ),
 		"%s/scr.%d.tmp.XXXXXX",
 		tmpdir,
 		getpid()
@@ -533,7 +541,7 @@ getCommand(
 		/* Get a command segment				 */
 		if( tp->doPrompt )	{
 			/* Input from a terminal			 */
-			part = readline( 
+			part = readline(
 				len ? tp->extraPrompt : tp->thePrompt
 			);
 		} else	{
@@ -597,7 +605,7 @@ setupHomer(
 	/* Divide into three parts: leadin, ${HOME}, trailer		 */
 	sprintf( buf, "^\\(.*\\)\\(%s\\)\\(.*\\)$", home );
 	/* Compile into the pattern buffer				 */
-	if( regcomp( &pattern, buf, RE_SYNTAX_SED ) )	{
+	if( regcomp( &pattern, buf, REG_EXTENDED ) )	{
 		perror( buf );
 		exit( 1 );
 	}
@@ -656,13 +664,13 @@ main(
 				lbp - bp,
 				"%s%s",
 				((i == optind) ? "" : " "),
-			   	argv[ i ]
+				argv[ i ]
 			);
 		}
 		nonfatal += doCommand( line );
 	} else	{
 		/* Read commands from stdin, redirecting if needed	 */
-		if( ifile && 
+		if( ifile &&
 		(freopen( ifile, "rt", stdin ) != stdin ) )	{
 			panic( errno, "cannot redirect input to '%s'",
 					ifile );

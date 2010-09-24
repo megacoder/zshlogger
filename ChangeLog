@@ -1,0 +1,242 @@
+2010-03-09 18:34  reynolds
+
+	* cvs2cl: Imported
+
+2010-03-09 18:33  reynolds
+
+	* Makefile: RPM now builds
+
+2010-03-09 18:32  reynolds
+
+	* Makefile.am, autogen.sh: Checkpoint
+
+2010-03-09 18:26  reynolds
+
+	* AUTHORS, ChangeLog, NEWS, README, autogen.sh, Makefile,
+	Makefile.am, zshlogger.spec: Checkpoint
+
+2010-03-09 18:23  reynolds
+
+	* autogen.sh, configure.in: Checkpoint
+
+2010-03-09 18:10  reynolds
+
+	* Makefile.am, autogen.sh, configure.in, zshlogger.spec.in:
+	Checkpoint
+
+2010-03-09 18:06  reynolds
+
+	* configure.in, zshlogger.spec.in: Checkpoint
+
+2010-03-09 17:41  reynolds
+
+	* Makefile, zshlogger.spec: Checkpoint
+
+2010-03-09 17:38  reynolds
+
+	* Makefile, zshlogger.c: Don't run past end of single-token
+	commands.
+
+2010-03-05 21:46  reynolds
+
+	* Makefile: Modernized
+
+2009-11-23 20:05  reynolds
+
+	* Makefile: Use funky compile flags
+
+2009-07-02 22:04  reynolds
+
+	* Makefile, zshlogger.c: Use F11's POSIX-compatible symbols.
+
+2009-02-10 14:47  treynold
+
+	* zshlogger.c: Added "#find" splat to just locate commands if "-n"
+	isn't used.
+
+2008-12-30 10:57  treynold
+
+	* zshlogger.zsh, zshlogger2zsh.zsh: Decruft
+
+2008-09-04 06:52  reynolds
+
+	* zshlogger.c: 1)  Added '-h' and '-H' homer switches.	2)  Added
+	'-c cmd' switch, too.
+
+2008-08-30 11:39  reynolds
+
+	* zshlogger.c: Added '-a' switch to turn off displaying absolute
+	paths.
+
+2008-08-30 11:37  reynolds
+
+	* Makefile, zshlogger.c: If first command line token is an
+	executable on the ${PATH}, show its absolute path.
+
+2008-08-30 10:39  reynolds
+
+	* zshlogger.c: 1)  Added '-p prompt' switch.  2)  Dropped leading
+	\n from the EOF message.
+
+2008-08-30 10:29  reynolds
+
+	* Makefile: Discarded forked zsh scripts.
+
+2008-08-30 10:27  reynolds
+
+	* .cvsignore, Makefile, test, zshlogger.c: Use ZSH to build
+	multi-step scripts.
+
+2005-12-03 12:35  reynolds
+
+	* test, zshlogger.c: Changed mind on the "#fixme" keyword: it's now
+	"#ignore".
+
+2005-12-03 12:34  reynolds
+
+	* Makefile, test, zshlogger.c: Made keyword recognition
+	case-insentitive.  Added "#fixme" keyword to completely ignore a
+	line.
+
+2005-10-05 13:00  reynolds
+
+	* zshlogger2zsh.zsh: Don't put the shell prompt in the output, so
+	we could actually feed the script to a ZSH process.
+
+2005-10-05 12:57  reynolds
+
+	* Makefile, test: 1) Can't strip a shell script, Dolt! 2) Need to
+	escape single quotes in #note lines.
+
+2005-10-05 12:54  reynolds
+
+	* unscript.zsh, zshlogger2zsh.zsh: Renamed the freakin' script.
+
+2005-10-05 12:53  reynolds
+
+	* test, unscript.zsh: Convert a zshlogger script into an ordinary
+	ZSH script.
+
+2005-09-20 18:26  reynolds
+
+	* Makefile, test, zshlogger.c: Since readline() is dropping TAB
+	characters from the input, use fgets() iff input is from a file.
+
+2005-08-18 14:50  reynolds
+
+	* zshlogger.c: Added "#note" for adding editorial comments.
+
+2005-08-18 14:05  reynolds
+
+	* Makefile, test, zshlogger.c: Doh, check the _correct_ line
+	length...
+
+2005-08-18 13:43  reynolds
+
+	* .cvsignore: Ignorables
+
+2005-08-18 13:43  reynolds
+
+	* test: Need a line continuation test.
+
+2005-08-18 13:37  reynolds
+
+	* Makefile, zshlogger.c: 1) Use readline() to read from stdin 2)
+	Allow final \\ for command line continuation
+
+2005-08-16 14:38  reynolds
+
+	* Makefile: Install into "/opt/bin" be default.
+
+2005-01-17 08:22  reynolds
+
+	* test, zshlogger.c: Added "#step" directive to provide in-context
+	labels.
+
+2005-01-03 10:01  reynolds
+
+	* zshlogger.c: Refined script parsing so we can use whitespaces
+	after #-tokens.
+
+2004-12-12 12:26  reynolds
+
+	* Makefile: Put into ~/bin since that doesn't get blasted when I
+	re-install the OS.
+
+2004-09-26 15:56  reynolds
+
+	* zshlogger.c: Pretty printed
+
+2004-09-26 15:56  reynolds
+
+	* zshlogger.c: Added '#command' descriptions.
+
+2004-09-26 14:36  reynolds
+
+	* test, zshlogger.c: Don't try to escape the line; supply it to cat
+	as a literal HERE document!
+
+2004-09-22 11:59  reynolds
+
+	* Makefile, test, zshlogger.c: Added "#quiet" directive to omit
+	copying the command itself.
+
+2004-09-22 11:23  reynolds
+
+	* zshlogger.c: Added "usage()" routine.
+
+2004-09-10 13:51  reynolds
+
+	* zshlogger.c: Removed extra space after prompt.
+
+2004-09-09 20:42  reynolds
+
+	* Makefile, zshlogger.c: Removed extraneous redirections in the
+	script.
+
+2004-09-09 20:33  reynolds
+
+	* zshlogger.c: Build up a shell script and then run that, recording
+	the results.
+
+2004-09-09 19:09  reynolds
+
+	* zshlogger.c: Checkpoint.
+
+2004-09-09 16:52  reynolds
+
+	* Makefile, test, zshlogger.c: Switched to C program so I can
+	control it better.
+
+2004-09-09 12:38  reynolds
+
+	* zshlogger, zshlogger.zsh: Renamed the file.
+
+2004-09-09 12:37  reynolds
+
+	* zshlogger: Checkpoint
+
+2004-09-09 10:53  reynolds
+
+	* test: Foolish test case.
+
+2004-09-09 10:52  reynolds
+
+	* zshlogger: Omit saving stdout from the 1 command following the
+	line '#omit'.
+
+2004-09-09 10:40  reynolds
+
+	* zshlogger: Added the '-t term' switch so I can use simple
+	underlining and such if I want.
+
+2004-09-09 10:33  reynolds
+
+	* Makefile, README.txt, zshlogger: Runs shell commands and captures
+	their output.  Optionally converts it to XML (needs txt2xml
+	helper).
+
+2004-09-09 10:33  reynolds
+
+	* Makefile, README.txt, zshlogger: Initial revision
+
