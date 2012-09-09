@@ -13,7 +13,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-typedef	struct	prompt_u	{
+typedef	struct	prompt_s	{
 	int		doPrompt;
 	char		thePrompt[ 48 ];
 	char		extraPrompt[ 48 ];
