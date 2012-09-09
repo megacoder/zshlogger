@@ -1,3 +1,4 @@
+SUBDIRS	=src
 EXTRA_DIST	=	\
 	autogen.sh	\
 	AUTHORS		\
@@ -5,5 +6,5 @@ EXTRA_DIST	=	\
 	ChangeLog	\
 	INSTALL		\
 	NEWS		\
-	README
-bin_PROGRAMS=zshlogger
+	README		\
+	example-script
