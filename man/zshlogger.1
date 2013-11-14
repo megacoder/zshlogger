@@ -1,0 +1,99 @@
+.TH zshlogger "1" "DATE" "MegaCoder tools" "User Commands"
+.SH NAME
+zshlogger \- pass commands to a \fBzsh\fP(\fI1\fP) and control its output
+.SH SYNPOSIS
+.B zshlogger
+[\fIoptions\fP]
+.SH DESCRIPTION
+.PP
+\fBzshlogger\fP(\fI1\fP) passes commands to a \fBzsh\fP(\fI1\fP) instance
+and records any output into a file.
+This is quite similar to \fBscript\fP(\fI1\fP) with an important difference:
+the output of some commands is hidden and phony results can be placed into
+the output.
+.PP
+When producing camera-ready artwork for technical classes, sometimes the
+normal output of a command must be massaged.  Any irrelevant preparator commands
+should be executed, but they shouldn't produce any distracting output.
+.PP
+To this end, \fBzshlogger\fP(\fI1\fP) recognizes a minimal scripting
+language.
+Anything not recognized as a scripting command is passed to a slave
+\fBzsh\fP(\fI1\fP) instance; any output the command produces is copied
+to a log file.
+.TP
+\fB\-D\fP
+increase debug output verbosity; useful only to the author and maybe not even
+him.
+.TP
+\fB\-a\fP
+prefix each executed command with its absolute path.
+Anything run by \fIroot\fP should probably display the absolute path to
+the commands, to encourage best system administrator practice.
+.TP
+\fB\-c\fP \fIcmd\fP
+execute the argument \fIcmd\fP only and then exit.
+This is similar behavior to all shells, such as \fBbash\fP(\fI1\fP) or
+\fBzsh\fP(\fI\fP).
+.TP
+\fB\-f\fP \fIscript\fP
+read \fBzshlogger\fP(\fI1\fP) commands from \fIscript\fP instead of from
+\fIstdin\fP.
+.TP
+\fB\-h\fP
+produce a succinct usage summary.
+.TP
+\fB\-o\fP \fIofile\fP
+write all output to \fIofile\fP instead of to \fIstdout\fP.
+.TP
+\fB\-p\fP \fIprompt\fP
+have the slave \fBzsh\fP(\fI1\fP) use \fIprompt\fP as the shell prompt instead
+of whatever it would normally use.
+Usefull for having commands appear to be run by \fIroot\fP even if the script
+is run by another user.
+.TP
+\fB\-s\fP \fIshell\fP
+use \fIshell\fP as the slave shell instead of the default \fB/bin/zsh\fP;
+just in case your shell is somewhere else.
+A non-zsh shell would probably not work.
+.SH "SCRIPTING LANGUAGE"
+.PP
+The scripting language is really small.
+An octothorpe (\fB#\fI) in column 1 begins a scripting command:
+.TP
+\fB#ignore\fP
+ignore this line completely.
+.TP
+\fB#hide\fP \fIcommand...\fP
+Perform \fIcommand\fP but show neither the command nor the output.
+Use this to silently prepare for a real command; create temporary files;
+download stuff; whatever you need to hide.
+.TP
+\fB#note\fP \fITitle\fP
+insert editorial comment in the output.
+.TP
+\fB#snip\fP \fIcommand...\fP
+show and run the command but do \fInot\fP display any results.
+.TP
+\fBquiet\fP \fIcommand\fP
+run the \fIcommand\fP but do not show the command.
+Show the results.
+.TP
+\fB#step\fP \fIdescription\fP
+insert editorial command into the output.
+These comments are sequentially numbered to serve as section titles.
+.SH AUTHOR
+Written by Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+.SH REPORTING BUGS
+Bugs?  What are you thinking?
+.SH COPYRIGHT
+Copyright \(co 2013 Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+.br
+International copyright secured.  All rights reserved.
+.br
+This software is licensed under the GPLv2, exactly.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+All warranties are declaimed and denied, including any implied warranty of merchantibility.
+This software has no claim of fitness for any purpose
