@@ -8,3 +8,4 @@ EXTRA_DIST	=	\
 	NEWS		\
 	README		\
 	example-script
+ACLOCAL_AMFLAGS = -I m4
