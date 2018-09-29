@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.63])
-AC_INIT([zshlogger], [1.0.3], [Tommy.Reynolds@MegaCoder.com])
+AC_INIT([zshlogger], [1.0.4], [oldest.software.guy@gmail.com])
 AC_CONFIG_SRCDIR([src/zshlogger.c])
 AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_MACRO_DIR([m4])
